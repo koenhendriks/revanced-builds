@@ -1,1 +1,6 @@
 # INCLUDE PATCHES FROM BELOW. DO NOT REMOVE THIS LINE
+hide-cast-button
+autorepeat-by-default
+enable-debugging
+hide-autoplay-button
+hide-infocard-suggestions
