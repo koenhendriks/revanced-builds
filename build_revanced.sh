@@ -77,11 +77,6 @@ if grep -q '^[^#]' $patches; then
 fi
 
 if [ -f "com.google.android.youtube.apk" ]; then
-    echo "Building Root APK"
-    java -jar revanced-cli.jar -m revanced-integrations.apk -b revanced-patches.jar --mount \
-        -e microg-support ${excluded_patches[@]} \
-        $EXPERIMENTAL \
-        -a com.google.android.youtube.apk -o build/revanced-root.apk
     echo "Building Non-root APK"
     java -jar revanced-cli.jar -m revanced-integrations.apk -b revanced-patches.jar \
         ${excluded_patches[@]} \
@@ -89,22 +84,4 @@ if [ -f "com.google.android.youtube.apk" ]; then
         -a com.google.android.youtube.apk -o build/revanced-nonroot.apk
 else
     echo "Cannot find YouTube APK, skipping build"
-fi
-echo ""
-echo "************************************"
-echo "Building YouTube Music APK"
-echo "************************************"
-if [ -f "com.google.android.apps.youtube.music.apk" ]; then
-    echo "Building Root APK"
-    java -jar revanced-cli.jar -b revanced-patches.jar --mount \
-        -e microg-support ${excluded_patches[@]} \
-        $EXPERIMENTAL \
-        -a com.google.android.apps.youtube.music.apk -o build/revanced-music-root.apk
-    echo "Building Non-root APK"
-    java -jar revanced-cli.jar -b revanced-patches.jar \
-        ${excluded_patches[@]} \
-        $EXPERIMENTAL \
-        -a com.google.android.apps.youtube.music.apk -o build/revanced-music-nonroot.apk
-else
-    echo "Cannot find YouTube Music APK, skipping build"
 fi
