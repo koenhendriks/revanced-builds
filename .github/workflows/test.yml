@@ -2,7 +2,9 @@ name: ReVanced Test Build
 
 on:
   push:
-
+    branches: [main]
+  pull_request:
+    branches: [main]
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -17,7 +19,7 @@ jobs:
           distribution: "adopt"
 
       - name: Download APKs from UptoDown
-        run: python download_uptodown.py
+        run: ./download_uptodown.sh
 
       - name: Test Build APKs
         run: |
